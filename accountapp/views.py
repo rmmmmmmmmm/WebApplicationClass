@@ -5,4 +5,5 @@ from django.shortcuts import render
 
 
 def hello_world(request):
-    return HttpResponse('Hello World!') # alt+enter -> 파이참이 스스로 모듈 불러옴
+    return render(request, 'base.html')
+
