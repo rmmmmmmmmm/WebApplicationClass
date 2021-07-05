@@ -5,5 +5,5 @@ from django.shortcuts import render
 
 
 def hello_world(request):
-    return render(request, 'base.html')
+    return render(request, 'accoutapp/hello_world.html')
 
