@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accountapp.models import HelloWorld
 
@@ -33,6 +33,11 @@ class AccountCreateView(CreateView): # from django.views.generic import CreateVi
     success_url = reverse_lazy('accountapp:hello_world') # _lazy Hello_world의 reverse와 동일하나 함수에서 불러오느냐 클래스에서 불러오느냐의 차이
     template_name = 'accountapp/create.html'
 # 로직 만들었으면 라우팅(urls.py)
+
+class AccountDetailView(DetailView):
+    model = User
+    context_object_name = 'target_user'
+    template_name = 'accountapp/detail.html'
 
 
 
