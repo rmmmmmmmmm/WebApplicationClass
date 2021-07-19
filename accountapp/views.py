@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from accountapp.models import HelloWorld
 
@@ -46,5 +46,9 @@ class AccountUpdateView(UpdateView):
     success_url = reverse_lazy('accountapp:hello_world') # detail 페이지로 돌아가고 싶지만 urls.py에서 설정해둔 int:pk 가 없으므로 에러
     template_name = 'accountapp/update.html'
 
-
+class AccountDeleteView(DeleteView):
+    model = User
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('accountapp:hello_world')
+    template_name = 'accountapp/delete.html'
 
