@@ -53,8 +53,10 @@ class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
     context_object_name = 'target_user'
-    success_url = reverse_lazy('accountapp:hello_world') # detail 페이지로 돌아가고 싶지만 urls.py에서 설정해둔 int:pk 가 없으므로 에러
     template_name = 'accountapp/update.html'
+
+    def get_success_url(self):
+        return reverse('accountapp:detail', kwargs={'pk': self.object.pk})
 
 
 @method_decorator(has_ownership, 'get')
