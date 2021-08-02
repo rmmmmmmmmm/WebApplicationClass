@@ -281,7 +281,7 @@ let magicGrid = new MagicGrid({
   static: true,
   useMin: true
 });
-// masonrys 비대칭 블록형 구조
+
 var masonrys = document.getElementsByTagName("img")
 
 for (let i=0; i < masonrys.length; i++) {
