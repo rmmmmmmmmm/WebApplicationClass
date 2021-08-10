@@ -11,8 +11,8 @@ from commentapp.forms import CommentCreationForm
 from commentapp.models import Comment
 
 
-@method_decorator(comment_ownership_required, 'get')
-@method_decorator(comment_ownership_required, 'post')
+@method_decorator(login_required, 'get')
+@method_decorator(login_required, 'post')
 class CommentCreateView(CreateView):
     model = Comment
     form_class = CommentCreationForm
