@@ -13,12 +13,24 @@ services:
       - pragmatic_class_media:/data/media/
 
   django:
-    image: pragmatic_class:3
+    image: pragmatic_class:4
     networks:
       - pragmatic_class_network
     volumes:
       - pragmatic_class_static:/home/WebApplicationClass/staticfiles/
       - pragmatic_class_media:/home/WebApplicationClass/media/
+
+  mariadb:
+    image: mariadb:10.5
+    networks:
+      - pragmatic_class_network
+    volumes:
+      - pragmatic_mariadb:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: password1
+      MARIADB_DATABASE: django
+      MARIADB_USER: django
+      MARIADB_PASSWORD: password1
 
 networks:
   pragmatic_class_network:
@@ -26,3 +38,4 @@ networks:
 volumes:
   pragmatic_class_static:
   pragmatic_class_media:
+  pragmatic_mariadb:
