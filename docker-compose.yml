@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  nginx:
+    image: nginx:1.19.5
+    ports:
+      - 80:80
+    networks:
+      - pragmatic_class_network
+    volumes:
+      - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
+      - pragmatic_class_static:/data/static/
+      - pragmatic_class_media:/data/media/
+
+  django:
+    image: pragmatic_class:3
+    networks:
+      - pragmatic_class_network
+    volumes:
+      - pragmatic_class_static:/home/WebApplicationClass/staticfiles/
+      - pragmatic_class_media:/home/WebApplicationClass/media/
+
+networks:
+  pragmatic_class_network:
+
+volumes:
+  pragmatic_class_static:
+  pragmatic_class_media:
