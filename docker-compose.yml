@@ -19,6 +19,8 @@ services:
     volumes:
       - pragmatic_class_static:/home/WebApplicationClass/staticfiles/
       - pragmatic_class_media:/home/WebApplicationClass/media/
+    secrets:
+      - DJANGO_SECRET_KEY
 
   mariadb:
     image: mariadb:10.5
@@ -39,3 +41,7 @@ volumes:
   pragmatic_class_static:
   pragmatic_class_media:
   pragmatic_mariadb:
+
+secrets:
+  DJANGO_SECRET_KEY:
+    external: true
