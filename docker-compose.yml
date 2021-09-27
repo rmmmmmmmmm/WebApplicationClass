@@ -21,6 +21,8 @@ services:
       - pragmatic_class_media:/home/WebApplicationClass/media/
     secrets:
       - DJANGO_SECRET_KEY
+      - MARIADB_USER
+      - MARIADB_PASSWORD
 
   mariadb:
     image: mariadb:10.5
@@ -28,11 +30,15 @@ services:
       - pragmatic_class_network
     volumes:
       - pragmatic_mariadb:/var/lib/mysql
+    secrets:
+      - MARIADB_USER
+      - MARIADB_PASSWORD
+      - MARIADB_ROOT_PASSWORD
     environment:
-      MARIADB_ROOT_PASSWORD: password1
       MARIADB_DATABASE: django
       MARIADB_USER: django
       MARIADB_PASSWORD: password1
+      MARIADB_ROOT_PASSWORD: password1
 
 networks:
   pragmatic_class_network:
@@ -44,4 +50,10 @@ volumes:
 
 secrets:
   DJANGO_SECRET_KEY:
+    external: true
+  MARIADB_ROOT_PASSWORD:
+    external: true
+  MARIADB_USER:
+    external: true
+  MARIADB_PASSWORD:
     external: true
