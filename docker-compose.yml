@@ -11,6 +11,7 @@ services:
       - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
       - pragmatic_class_static:/data/static/
       - pragmatic_class_media:/data/media/
+      - gis_log:/var/log/nginx/
 
   django:
     image: pragmatic_class:5
@@ -47,6 +48,7 @@ volumes:
   pragmatic_class_static:
   pragmatic_class_media:
   pragmatic_mariadb:
+  gis_log:
 
 secrets:
   DJANGO_SECRET_KEY:
