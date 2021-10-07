@@ -15,6 +15,8 @@ services:
       - pragmatic_class_static:/data/static/
       - pragmatic_class_media:/data/media/
       - gis_log:/var/log/nginx/
+    secrets:
+      - NGINX_AUTH
 
   django:
     image: pragmatic_class:5
@@ -61,4 +63,6 @@ secrets:
   MARIADB_USER:
     external: true
   MARIADB_PASSWORD:
+    external: true
+  NGINX_AUTH:
     external: true
